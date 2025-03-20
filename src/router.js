@@ -1,10 +1,23 @@
 import { createWebHashHistory, createRouter } from 'vue-router';
-import { useTabs } from './index';
 
-import Home from './Home.vue';
+import Login from './views/Login.vue';
+import Layout from './views/Layout.vue';
+import Blank from './views/Blank.vue';
+import Page from './views/Page.vue';
 
 const routes = [
-  { path: '/', name: 'Home', component: Home, meta: { title: '首页' } },
+  { path: '/', name: 'Home', redirect: { name: 'Page', query: { id: 0 } } },
+  { path: '/login', name: 'Login', component: Login, meta: { title: '登录', login: false } },
+  {
+    path: '/layout',
+    name: 'Layout',
+    component: Layout,
+    redirect: { name: 'Page', query: { id: 0 } },
+    children: [
+      { path: '/blank', name: 'Blank', component: Blank, meta: { title: '空白页' } },
+      { path: '/page', name: 'Page', component: Page, meta: { title: '页面' } },
+    ],
+  },
 ];
 
 export const router = createRouter({
@@ -12,6 +25,7 @@ export const router = createRouter({
   routes,
 });
 
-router.afterEach((to, from, failure) => {
-  useTabs().add(to);
+router.beforeEach((to, from) => {
+  if (to.meta.login === false) { return; }
+  if (!localStorage.getItem('token')) { return { name: 'Login', replace: true }; }
 });

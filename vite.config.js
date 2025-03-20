@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: './src/index.js',
+      entry: 'lib/index.js',
       formats: ['es'],
     },
     rollupOptions: {
       external: ['vue', 'vue-router'],
-    }
+    },
   },
 });
