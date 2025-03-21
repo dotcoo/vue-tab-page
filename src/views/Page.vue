@@ -10,7 +10,8 @@
       <button @click="forward">router.forward</button>
     </p>
     <p style="display: flex; gap: 10px;">
-      <button @click="close">router.close</button>
+      <button @click="refresh">tab.refresh</button>
+      <button @click="close">tab.close</button>
     </p>
     <hr />
     <p><button @click="onLogout">logout</button></p>
@@ -25,49 +26,59 @@ import { useTab, onTabMounted, onTabActivated, onTabDeactivated, onTabBeforeUnmo
 const router = useRouter();
 const route = useRoute();
 
-const tab = useTab();
-
 const input = ref(null);
 
-// 打开新标签
+// Get current label bar information. 获取当前标签栏信息.
+const tab = useTab();
+
+// Open a new tab. 打开新标签.
 const push = async () => {
   router.push({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
 };
 
-// 替换标签
+// Replace the current label. 替换当前标签.
 const replace = async () => {
   router.replace({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
 };
 
-// 后退
+// Back. 后退.
 const back = async () => {
   router.back();
 };
 
-// 前进
+// Forward. 前进.
 const forward = async () => {
   router.forward();
 };
 
-// 关闭标签 并返回
-const close = () => {
-  tab.close();
+// Refresh. 刷新.
+const refresh = () => {
+  tab.refresh();
 };
 
+// Close the current tag and back. 关闭当前标签并返回.
+const close = () => {
+  tab.close('back');
+};
+
+// When the tab is opened. 标签页打开时.
 onTabMounted(() => {
   tab.title = tab.meta.title + tab.query.id;
   input.value = Math.random();
   console.log(tab.query.id, 'onMounted');
 });
 
+// When the tab is displayed. 标签页显示时.
 onTabActivated(() => {
   console.log(tab.query.id, 'onActivated');
 });
 
+// When the tab is hidden. 标签页隐藏时.
 onTabDeactivated(() => {
   console.log(tab.query.id, 'onDeactivated');
 });
 
+// When the tag page is destroyed. 标签页销毁时.
 onTabBeforeUnmount(() => {
   console.log(tab.query.id, 'onBeforeUnmount');
 });

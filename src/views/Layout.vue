@@ -1,13 +1,15 @@
 <template>
+  <!-- Tab Page switching bar. 标签页切换栏. -->
   <vue-tab-page-bar>
     <template v-slot="{ tab, index }">
       <div @click="tab.active()" :class="{ active: tab.fullPath == $route.fullPath }">
         <div>{{tab.title}}</div>
-        <div @click.stop="tab.refresh()">刷</div>
-        <div @click.stop="tab.close('right')">关</div>
+        <div @click.stop="tab.refresh()">Refresh</div>
+        <div @click.stop="tab.close('right')">Close</div>
       </div>
     </template>
   </vue-tab-page-bar>
+  <!-- Tab Page content. 标签页内容. -->
   <vue-tab-page-content></vue-tab-page-content>
 </template>
 
