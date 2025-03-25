@@ -33,12 +33,12 @@ const tab = useTab();
 
 // Open a new tab. 打开新标签.
 const push = async () => {
-  router.push({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
+  router.push({ name: 'Page', query: { id: Date.now() } });
 };
 
 // Replace the current label. 替换当前标签.
 const replace = async () => {
-  router.replace({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
+  router.replace({ name: 'Page', query: { id: Date.now() } });
 };
 
 // Back. 后退.

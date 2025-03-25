@@ -6,6 +6,12 @@
 
 ![vue-tab-page preview](preview.jpg)
 
+## 安装
+
+```bash
+npm install vue-tab-page
+```
+
 ## 使用说明
 
 ### main.js
@@ -78,12 +84,12 @@ const tab = useTab();
 
 // 打开新标签.
 const push = async () => {
-  router.push({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
+  router.push({ name: 'Page', query: { id: Date.now() } });
 };
 
 // 替换当前标签.
 const replace = async () => {
-  router.replace({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
+  router.replace({ name: 'Page', query: { id: Date.now() } });
 };
 
 // 后退.

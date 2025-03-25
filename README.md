@@ -6,6 +6,12 @@
 
 ![vue-tab-page preview](preview.jpg)
 
+## Installation
+
+```bash
+npm install vue-tab-page
+```
+
 ## Instructions
 
 ### main.js
@@ -79,12 +85,12 @@ const tab = useTab();
 
 // Open a new tab..
 const push = async () => {
-  router.push({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
+  router.push({ name: 'Page', query: { id: Date.now() } });
 };
 
 // Replace the current label
 const replace = async () => {
-  router.replace({ name: 'Page', query: { id: Date.now() }, state: { data: [{a:1}] } });
+  router.replace({ name: 'Page', query: { id: Date.now() } });
 };
 
 // Back.
