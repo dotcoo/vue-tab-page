@@ -1,6 +1,6 @@
 {
   "name": "vue-tab-page",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "vue tab page",
   "author": "dotcoo <dotcoo@163.com> (http://blog.dotcoo.com)",
   "homepage": "https://github.com/dotcoo/vue-tab-page#readme",
@@ -19,6 +19,7 @@
   ],
   "type": "module",
   "main": "dist/vue-tab-page.js",
+  "module": "dist/vue-tab-page.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -29,8 +30,8 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.2.0",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.2.6",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   }
