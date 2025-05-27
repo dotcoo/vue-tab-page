@@ -2,6 +2,8 @@
   <div>
     <h1>{{ route.fullPath }} Page</h1>
     <hr />
+    <p>props: {{props}}</p>
+    <p>$attrs: {{$attrs}}</p>
     <p><input v-model="input" /></p>
     <p style="display: flex; gap: 10px;">
       <button @click="push">router.push</button>
@@ -22,6 +24,10 @@
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useTab, onTabMounted, onTabActivated, onTabDeactivated, onTabBeforeUnmount } from '../../lib';
+
+const props = defineProps({
+  id: { type: Number },
+});
 
 const router = useRouter();
 const route = useRoute();
